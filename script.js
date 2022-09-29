@@ -16,12 +16,7 @@ var numberSelection = "0123456789";
 var specialSelection = `~\`!@#$%^&*()_-+={[}]|:;"'<,>.?/`;
 */
 
-var characterVariety = {
-  lowercaseSelection: "abcdefghijklmnopqrstuvwxyz",
-  uppercaseSelection: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  numberSelection: "0123456789",
-  specialSelection: `~\`!@#$%^&*()_-+={[}]|:;"'<,>.?/`
-}
+var characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~\`!@#$%^&*()_-+={[}]|:;"<,>.?/",'';
 
 function generatePassword() {
   //determine length of password
@@ -29,23 +24,24 @@ function generatePassword() {
   //if password length is invalid, let the user know and restart the process
   if ((characterQuantity < 8) || (characterQuantity > 128)) {
     alert ("Please enter a valid password length.");
+    generatePassword();
   }
   //upon confirm, these types of characters will be included in the generated password
   var characterLowercase = confirm ("Should lowercase letters be included?"); //lowercase
   if (characterLowercase == false) {
-    delete characterVariety.lowercaseSelection;
+    characters = characters.replace("abcdefghijklmnopqrstuvwxyz", "");
   }
   var characterUppercase = confirm ("Should uppercase letters be included?"); //uppercase
   if (characterUppercase == false) {
-    delete characterVariety.uppercaseSelection;
+    characters = characters.replace("ABCDEFGHIJKLMNOPQRSTUVWXYZ", "");
   }
   var characterNumber = confirm ("Should numbers be included?"); //numbers
   if (characterNumber == false) {
-    delete characterVariety.numberSelection;
+    characters = characters.replace("0123456789", "");
   }
   var characterSpecial = confirm ("Should special characters be included?"); //special characters
   if (characterSpecial == false) {
-    delete characterVariety.specialSelection;
+    characters = characters.replace('~\`!@#$%^&*()_-+={[}]|:;"<,>.?/",', "");
   }
   //restart prompts if no character types are selected
   if ((characterLowercase == false) && (characterUppercase == false) && (characterNumber == false) && (characterSpecial == false)) {
@@ -54,7 +50,7 @@ function generatePassword() {
   }
   //loops character generation until requested character length is fulfilled
   for (var i = 0; i < characterQuantity; i++) {
-    var password = characterVariety.toString().charAt(Math.floor(Math.random() * characterQuantity.length));
+    password = characterVariety.lowercaseSelection
   }
   return password;
 }
