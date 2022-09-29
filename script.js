@@ -9,12 +9,19 @@ var generateBtn = document.querySelector("#generate");
 //prompt for numeric
 //prompt for special characters
 
-//define all characters total
+/*define all characters total
 var lowercaseSelection = "abcdefghijklmnopqrstuvwxyz";
 var uppercaseSelection = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numberSelection = "0123456789";
 var specialSelection = `~\`!@#$%^&*()_-+={[}]|:;"'<,>.?/`;
-var characterArray = [lowercaseSelection, uppercaseSelection, numberSelection, specialSelection];
+*/
+
+var characterVariety = {
+  lowercaseSelection: "abcdefghijklmnopqrstuvwxyz",
+  uppercaseSelection: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  numberSelection: "0123456789",
+  specialSelection: `~\`!@#$%^&*()_-+={[}]|:;"'<,>.?/`
+}
 
 function generatePassword() {
   //determine length of password
@@ -22,24 +29,23 @@ function generatePassword() {
   //if password length is invalid, let the user know and restart the process
   if ((characterQuantity < 8) || (characterQuantity > 128)) {
     alert ("Please enter a valid password length.");
-    generatePassword ();
   }
   //upon confirm, these types of characters will be included in the generated password
   var characterLowercase = confirm ("Should lowercase letters be included?"); //lowercase
   if (characterLowercase == false) {
-    characterArray.splice(0, 1);
+    delete characterVariety.lowercaseSelection;
   }
   var characterUppercase = confirm ("Should uppercase letters be included?"); //uppercase
   if (characterUppercase == false) {
-    characterArray.splice(1, 1);
+    delete characterVariety.uppercaseSelection;
   }
   var characterNumber = confirm ("Should numbers be included?"); //numbers
   if (characterNumber == false) {
-    characterArray.splice(2, 1);
+    delete characterVariety.numberSelection;
   }
   var characterSpecial = confirm ("Should special characters be included?"); //special characters
   if (characterSpecial == false) {
-    characterArray.splice(3, 1);
+    delete characterVariety.specialSelection;
   }
   //restart prompts if no character types are selected
   if ((characterLowercase == false) && (characterUppercase == false) && (characterNumber == false) && (characterSpecial == false)) {
