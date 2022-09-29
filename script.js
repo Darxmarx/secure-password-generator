@@ -10,7 +10,14 @@ var generateBtn = document.querySelector("#generate");
 //prompt for special characters
 
 function generatePassword() {
-
+  //determine length of password
+  var characterQuantity = prompt ("How many characters long should the password be? It cannot be less than 8 characters or more than 128 characters.");
+  //if password length is invalid, let the user know and restart the process
+  if ((characterQuantity < 8) || (characterQuantity > 128)) {
+    alert ("Please enter a valid password length.");
+    generatePassword ();
+  }
+  
 }
 
 // Write password to the #password input
