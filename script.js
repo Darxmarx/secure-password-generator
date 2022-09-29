@@ -11,9 +11,10 @@ var generateBtn = document.querySelector("#generate");
 
 //define all characters total
 var lowercaseSelection = "abcdefghijklmnopqrstuvwxyz";
-var uppercaseSelection = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-var numberSelection = "0123456789"
-var specialSelection = `~\`!@#$%^&*()_-+={[}]|:;"'<,>.?/`
+var uppercaseSelection = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numberSelection = "0123456789";
+var specialSelection = `~\`!@#$%^&*()_-+={[}]|:;"'<,>.?/`;
+var characterArray = [lowercaseSelection, uppercaseSelection, numberSelection, specialSelection];
 
 function generatePassword() {
   //determine length of password
@@ -28,6 +29,11 @@ function generatePassword() {
   var characterUppercase = confirm ("Should uppercase letters be included?"); //uppercase
   var characterNumber = confirm ("Should numbers be included?"); //numbers
   var characterSpecial = confirm ("Should special characters be included?"); //special characters
+  //restart prompts if no character types are selected
+  if ((characterLowercase == false) && (characterUppercase == false) && (characterNumber == false) && (characterSpecial == false)) {
+    alert ("You must select at least one character type for your password.");
+    generatePassword();
+  }
 }
 
 // Write password to the #password input
