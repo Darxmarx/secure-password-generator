@@ -16,7 +16,7 @@ var numberSelection = "0123456789";
 var specialSelection = `~\`!@#$%^&*()_-+={[}]|:;"'<,>.?/`;
 */
 
-var characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~\`!@#$%^&*()_-+={[}]|:;"<,>.?/",'';
+var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?/>.<,':;|}]{[+=_-)(*&^%$#@!~`";
 
 function generatePassword() {
   //determine length of password
@@ -41,7 +41,7 @@ function generatePassword() {
   }
   var characterSpecial = confirm ("Should special characters be included?"); //special characters
   if (characterSpecial == false) {
-    characters = characters.replace('~\`!@#$%^&*()_-+={[}]|:;"<,>.?/",', "");
+    characters = characters.replace("?/>.<,':;|}]{[+=_-)(*&^%$#@!~`");
   }
   //restart prompts if no character types are selected
   if ((characterLowercase == false) && (characterUppercase == false) && (characterNumber == false) && (characterSpecial == false)) {
@@ -50,7 +50,8 @@ function generatePassword() {
   }
   //loops character generation until requested character length is fulfilled
   for (var i = 0; i < characterQuantity; i++) {
-    password = characterVariety.lowercaseSelection
+    //characters = characters.split("");
+    password += characters.charAt(Math.floor(Math.random() * characters.length));
   }
   return password;
 }
