@@ -17,7 +17,11 @@ function generatePassword() {
     alert ("Please enter a valid password length.");
     generatePassword ();
   }
-  
+  //upon confirm, these types of characters will be included in the generated password
+  var characterLowercase = confirm ("Should lowercase letters be included?"); //lowercase
+  var characterUppercase = confirm ("Should uppercase letters be included?"); //uppercase
+  var characterNumber = confirm ("Should numbers be included?"); //numbers
+  var characterSpecial = confirm ("Should special characters be included?"); //special characters
 }
 
 // Write password to the #password input
