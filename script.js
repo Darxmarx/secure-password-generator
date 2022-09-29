@@ -9,6 +9,12 @@ var generateBtn = document.querySelector("#generate");
 //prompt for numeric
 //prompt for special characters
 
+//define all characters total
+var lowercaseSelection = "abcdefghijklmnopqrstuvwxyz";
+var uppercaseSelection = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var numberSelection = "0123456789"
+var specialSelection = `~\`!@#$%^&*()_-+={[}]|:;"'<,>.?/`
+
 function generatePassword() {
   //determine length of password
   var characterQuantity = prompt ("How many characters long should the password be? It cannot be less than 8 characters or more than 128 characters.");
