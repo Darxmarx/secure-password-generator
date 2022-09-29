@@ -26,13 +26,29 @@ function generatePassword() {
   }
   //upon confirm, these types of characters will be included in the generated password
   var characterLowercase = confirm ("Should lowercase letters be included?"); //lowercase
+  if (characterLowercase == false) {
+    characterArray.splice(0, 1);
+  }
   var characterUppercase = confirm ("Should uppercase letters be included?"); //uppercase
+  if (characterUppercase == false) {
+    characterArray.splice(1, 1);
+  }
   var characterNumber = confirm ("Should numbers be included?"); //numbers
+  if (characterNumber == false) {
+    characterArray.splice(2, 1);
+  }
   var characterSpecial = confirm ("Should special characters be included?"); //special characters
+  if (characterSpecial == false) {
+    characterArray.splice(3, 1);
+  }
   //restart prompts if no character types are selected
   if ((characterLowercase == false) && (characterUppercase == false) && (characterNumber == false) && (characterSpecial == false)) {
     alert ("You must select at least one character type for your password.");
     generatePassword();
+  }
+  //loops character generation until requested character length is fulfilled
+  for (var i = 0; i < characterQuantity; i++) {
+
   }
 }
 
