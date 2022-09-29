@@ -54,8 +54,9 @@ function generatePassword() {
   }
   //loops character generation until requested character length is fulfilled
   for (var i = 0; i < characterQuantity; i++) {
-
+    var password = characterVariety.toString().charAt(Math.floor(Math.random() * characterQuantity.length));
   }
+  return password;
 }
 
 // Write password to the #password input
