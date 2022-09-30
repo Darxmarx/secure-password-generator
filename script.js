@@ -32,6 +32,7 @@ function generatePassword() {
   //restart prompts if no character types are selected
   if ((characterLowercase == false) && (characterUppercase == false) && (characterNumber == false) && (characterSpecial == false)) {
     alert ("You must select at least one character type for your password.");
+    characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?/>.<,':;|}]{[+=_-)(*&^%$#@!~`";
     generatePassword();
   }
   //loops character generation until requested character length is fulfilled
