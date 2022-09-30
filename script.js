@@ -5,6 +5,7 @@ var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
 
 function generatePassword() {
   var password = "";
+  characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?/>.<,':;|}]{[+=_-)(*&^%$#@!~`";
   //determine length of password
   var characterQuantity = prompt ("How many characters long should the password be? It cannot be less than 8 characters or more than 128 characters.");
   //if password length is invalid, let the user know and restart the process
