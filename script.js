@@ -1,24 +1,10 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-
-//generating a password using different parameters
-//prompt for how many characters (8-128 possible) user wants
-//if criteria doesn't match, prompt reappears
-//prompt for lowercase
-//prompt for uppercase
-//prompt for numeric
-//prompt for special characters
-
-/*define all characters total
-var lowercaseSelection = "abcdefghijklmnopqrstuvwxyz";
-var uppercaseSelection = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numberSelection = "0123456789";
-var specialSelection = `~\`!@#$%^&*()_-+={[}]|:;"'<,>.?/`;
-*/
-
+//all characters available for use by default
 var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?/>.<,':;|}]{[+=_-)(*&^%$#@!~`";
 
 function generatePassword() {
+  var password = "";
   //determine length of password
   var characterQuantity = prompt ("How many characters long should the password be? It cannot be less than 8 characters or more than 128 characters.");
   //if password length is invalid, let the user know and restart the process
@@ -28,19 +14,19 @@ function generatePassword() {
   }
   //upon confirm, these types of characters will be included in the generated password
   var characterLowercase = confirm ("Should lowercase letters be included?"); //lowercase
-  if (characterLowercase == false) {
+  if (characterLowercase == false) { //on deconfirm, remove the character type from the total characters pool
     characters = characters.replace("abcdefghijklmnopqrstuvwxyz", "");
   }
   var characterUppercase = confirm ("Should uppercase letters be included?"); //uppercase
-  if (characterUppercase == false) {
+  if (characterUppercase == false) { //on deconfirm, remove the character type from the total characters pool
     characters = characters.replace("ABCDEFGHIJKLMNOPQRSTUVWXYZ", "");
   }
   var characterNumber = confirm ("Should numbers be included?"); //numbers
-  if (characterNumber == false) {
+  if (characterNumber == false) { //on deconfirm, remove the character type from the total characters pool
     characters = characters.replace("0123456789", "");
   }
   var characterSpecial = confirm ("Should special characters be included?"); //special characters
-  if (characterSpecial == false) {
+  if (characterSpecial == false) { //on deconfirm, remove the character type from the total characters pool
     characters = characters.replace("?/>.<,':;|}]{[+=_-)(*&^%$#@!~`");
   }
   //restart prompts if no character types are selected
@@ -50,7 +36,7 @@ function generatePassword() {
   }
   //loops character generation until requested character length is fulfilled
   for (var i = 0; i < characterQuantity; i++) {
-    //characters = characters.split("");
+    //.charAt selects a specific character at a given position in the 'characters' variable
     password += characters.charAt(Math.floor(Math.random() * characters.length));
   }
   return password;
@@ -59,12 +45,11 @@ function generatePassword() {
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
+
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
