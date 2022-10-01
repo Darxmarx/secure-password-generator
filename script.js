@@ -1,10 +1,10 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-
+var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?/>.<,':;|}]{[+=_-)(*&^%$#@!~`";
 function generatePassword() {
   var password = "";
   //all characters available for use by default
-  var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?/>.<,':;|}]{[+=_-)(*&^%$#@!~`";
+  characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?/>.<,':;|}]{[+=_-)(*&^%$#@!~`";
   //determine length of password
   var characterQuantity = prompt ("How many characters long should the password be? It cannot be less than 8 characters or more than 128 characters.");
   //if password length is invalid, let the user know and restart the process
@@ -32,7 +32,6 @@ function generatePassword() {
   //restart prompts if no character types are selected
   if ((characterLowercase == false) && (characterUppercase == false) && (characterNumber == false) && (characterSpecial == false)) {
     alert ("You must select at least one character type for your password.");
-    characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?/>.<,':;|}]{[+=_-)(*&^%$#@!~`";
     generatePassword();
   }
   //loops character generation until requested character length is fulfilled
